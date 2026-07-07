@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مروحة RGB المحمولة - اطلب الآن</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>مروحة RGB المحمولة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -14,105 +14,120 @@
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased min-h-screen">
 
-    <div class="max-w-6xl mx-auto px-4 py-4 md:py-10 pb-28">
-        
+    <div class="max-w-6xl mx-auto px-4 py-6 md:py-12 pb-28">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             
             <div class="space-y-4">
-                <div class="relative w-full overflow-hidden bg-white rounded-2xl shadow-md aspect-square border border-gray-100">
+                <div class="relative w-full overflow-hidden bg-white rounded-2xl shadow-sm aspect-square border border-gray-100">
                     <div id="carouselTrack" class="flex transition-transform duration-500 ease-out h-full w-full">
                         <img src="https://i5.walmartimages.com.mx/mg/gm/3pp/asr/75c5dc3f-993e-42dd-942d-066bb55e85f2.1a94cf563dea5471ab93ce4272b8f99a.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 2">
                         <img src="https://img.lazcdn.com/g/ff/kf/Se428e1e4c77b4ef596a647bd9cd7d98c9.jpg_720x720q80.jpg" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 1">
                         <img src="https://znice.mx/wp-content/uploads/2024/12/Ventilador-Iluminacion-RGB-Electrico4.webp" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 3">
                     </div>
                     
-                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all z-10">
-                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow transition-all z-10">
+                        <i class="fa-solid fa-chevron-left text-xs"></i>
                     </button>
-                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all z-10">
-                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow transition-all z-10">
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
                     </button>
                     
-                    <div id="carouselDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"></div>
+                    <div id="carouselDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1 z-10"></div>
                 </div>
 
-                <div class="bg-teal-50 border border-teal-100 rounded-xl py-3 px-4 grid grid-cols-3 gap-2 text-center">
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="w-9 h-9 bg-teal-600 rounded-full flex items-center justify-center text-white mb-1 shadow-sm">
-                            <i class="fa-solid fa-money-bill-wave text-sm"></i>
-                        </div>
-                        <span class="text-[11px] font-bold text-teal-900 leading-tight">الدفع عند الاستلام</span>
+                <div class="bg-teal-50 border border-teal-100 rounded-xl py-3 px-2 grid grid-cols-3 gap-1 text-center">
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-money-bill-wave text-teal-600 text-lg mb-1"></i>
+                        <span class="text-[11px] font-bold text-teal-900">الدفع عند الاستلام</span>
                     </div>
-                    <div class="flex flex-col items-center justify-center border-x border-teal-200/60">
-                        <div class="w-9 h-9 bg-teal-600 rounded-full flex items-center justify-center text-white mb-1 shadow-sm">
-                            <i class="fa-solid fa-shield-halved text-sm"></i>
-                        </div>
-                        <span class="text-[11px] font-bold text-teal-900 leading-tight">منتج أصلي ومضمون</span>
+                    <div class="flex flex-col items-center border-x border-teal-200/50">
+                        <i class="fa-solid fa-shield-halved text-teal-600 text-lg mb-1"></i>
+                        <span class="text-[11px] font-bold text-teal-900">منتج أصلي ومضمون</span>
                     </div>
-                    <div class="flex flex-col items-center justify-center">
-                        <div class="w-9 h-9 bg-teal-600 rounded-full flex items-center justify-center text-white mb-1 shadow-sm">
-                            <i class="fa-solid fa-truck-fast text-sm"></i>
-                        </div>
-                        <span class="text-[11px] font-bold text-teal-900 leading-tight">توصيل سريع للولايات</span>
+                    <div class="flex flex-col items-center">
+                        <i class="fa-solid fa-truck-fast text-teal-600 text-lg mb-1"></i>
+                        <span class="text-[11px] font-bold text-teal-900">توصيل سريع وموثوق</span>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white p-5 md:p-6 rounded-2xl shadow-md border border-gray-100 space-y-5">
+            <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-gray-100 space-y-6">
                 
                 <div>
-                    <h1 class="text-2xl font-black text-gray-900 mb-2">مروحة RGB المحمولة</h1>
-                    <div class="flex flex-col space-y-1">
-                        <span class="text-base text-gray-400 line-through">4200 د.ج</span>
-                        <span class="text-3xl font-extrabold text-emerald-600">2680 د.ج</span>
+                    <h1 class="text-2xl font-black text-gray-900">مروحة RGB المحمولة</h1>
+                    <div class="mt-2">
+                        <div class="text-gray-400 line-through text-base font-semibold">4200 د.ج</div>
+                        <div class="text-3xl font-black text-emerald-600 mt-0.5">2680 د.ج</div>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2.5">
-                        <i class="fa-solid fa-tags text-teal-600 ml-1"></i> اختر العرض المفضل لديك:
-                    </label>
-                    <div class="grid grid-cols-1 gap-3">
-                        <label class="relative flex items-center justify-between p-4 border-2 border-emerald-500 bg-emerald-50/40 rounded-xl cursor-pointer transition-all select-none" id="offer1Container">
-                            <input type="radio" name="product_offer" value="1" checked onchange="updateOfferPrice(2680, 1, this)" class="absolute left-4 top-1/2 -translate-y-1/2 accent-emerald-600 w-5 h-5">
-                            <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-2">اختر العرض المناسب لك:</label>
+                    <div class="space-y-2.5">
+                        <label id="containerOffer1" class="relative flex items-center justify-between p-3.5 border-2 border-emerald-500 bg-emerald-50/40 rounded-xl cursor-pointer transition-all select-none">
+                            <input type="radio" name="product_offer" value="1" checked onchange="switchOffer(2680, 1)" class="absolute left-4 top-1/2 -translate-y-1/2 accent-emerald-600 w-4.5 h-4.5">
+                            <div class="pr-1">
                                 <span class="block font-bold text-gray-900 text-sm">عرض قطعة واحدة</span>
-                                <span class="text-xs text-gray-500">مروحة واحدة فائقة القوة</span>
+                                <span class="text-[11px] text-gray-500">مروحة واحدة ملونة بقوة كاملة</span>
                             </div>
-                            <span class="font-extrabold text-emerald-700 text-base ml-8">2680 د.ج</span>
+                            <span class="font-black text-emerald-700 text-base ml-8">2680 د.ج</span>
                         </label>
                         
-                        <label class="relative flex items-center justify-between p-4 border border-gray-200 rounded-xl cursor-pointer hover:border-emerald-300 transition-all select-none" id="offer2Container">
-                            <input type="radio" name="product_offer" value="2" onchange="updateOfferPrice(5100, 2, this)" class="absolute left-4 top-1/2 -translate-y-1/2 accent-emerald-600 w-5 h-5">
-                            <div>
+                        <label id="containerOffer2" class="relative flex items-center justify-between p-3.5 border border-gray-200 rounded-xl cursor-pointer hover:border-emerald-300 transition-all select-none">
+                            <input type="radio" name="product_offer" value="2" onchange="switchOffer(5100, 2)" class="absolute left-4 top-1/2 -translate-y-1/2 accent-emerald-600 w-4.5 h-4.5">
+                            <div class="pr-1">
                                 <span class="block font-bold text-gray-900 text-sm">عرض قطعتين (2)</span>
-                                <span class="text-xs text-gray-500">توفير إضافي وشحن مدمج</span>
+                                <span class="text-[11px] text-gray-500">احصل على جهازين بسعر مخفض وشحن موحد</span>
                             </div>
-                            <span class="font-extrabold text-gray-900 text-base ml-8">5100 د.ج</span>
+                            <span class="font-black text-gray-900 text-base ml-8">5100 د.ج</span>
                         </label>
                     </div>
                 </div>
 
-                <form id="orderForm" class="space-y-4 pt-2">
+                <form id="orderForm" class="space-y-4" onsubmit="event.preventDefault();">
+                    
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1">الاسم الكامل *</label>
-                        <input type="text" id="fullname" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white" placeholder="مثال: أحمد غانم">
+                        <label class="block text-xs font-bold text-gray-700 mb-2">اختر لون المروحة المفضّل *</label>
+                        <div class="flex gap-5 bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <label class="flex items-center gap-2 cursor-pointer select-none">
+                                <input type="radio" name="product_color" value="أزرق" checked class="sr-only peer">
+                                <span class="w-6 h-6 rounded-full bg-blue-600 block border-2 border-white shadow-sm ring-1 ring-gray-300 peer-checked:ring-4 peer-checked:ring-teal-500 transition-all"></span>
+                                <span class="text-xs font-bold text-gray-700">أزرق</span>
+                            </label>
+                            
+                            <label class="flex items-center gap-2 cursor-pointer select-none">
+                                <input type="radio" name="product_color" value="أخضر" class="sr-only peer">
+                                <span class="w-6 h-6 rounded-full bg-emerald-500 block border-2 border-white shadow-sm ring-1 ring-gray-300 peer-checked:ring-4 peer-checked:ring-teal-500 transition-all"></span>
+                                <span class="text-xs font-bold text-gray-700">أخضر</span>
+                            </label>
+                            
+                            <label class="flex items-center gap-2 cursor-pointer select-none">
+                                <input type="radio" name="product_color" value="وردي" class="sr-only peer">
+                                <span class="w-6 h-6 rounded-full bg-pink-500 block border-2 border-white shadow-sm ring-1 ring-gray-300 peer-checked:ring-4 peer-checked:ring-teal-500 transition-all"></span>
+                                <span class="text-xs font-bold text-gray-700">وردي</span>
+                            </label>
+                        </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1">رقم الهاتف * (10 أرقام ويبدأ بـ 0)</label>
-                        <input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 text-left bg-white" dir="ltr" placeholder="0XXXXXXXXX">
+                        <label class="block text-xs font-bold text-gray-700 mb-1">الاسم واللقب *</label>
+                        <input type="text" id="customer_name" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white" placeholder="مثال: محمد السعيد">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">رقم الهاتف * (10 أرقام تبدأ بـ 0)</label>
+                        <input type="tel" id="phone_number" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 text-left bg-white" dir="ltr" placeholder="0XXXXXXXXX">
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">الولاية *</label>
-                        <select id="wilayaSelect" required onchange="calculateShipping()" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white">
+                        <select id="wilayaSelect" required onchange="calculateShipping()" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white">
                             <option value="">-- اختر الولاية من القائمة --</option>
-                            </select>
+                        </select>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1.5">مكان الاستلام ونوع التوصيل *</label>
+                        <label class="block text-xs font-bold text-gray-700 mb-1.5">طريقة التوصيل المطلوبة *</label>
                         <div class="grid grid-cols-2 gap-3">
                             <label class="flex items-center gap-2 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer select-none text-xs font-bold">
                                 <input type="radio" name="delivery_type" value="domicile" checked onchange="calculateShipping()" class="accent-teal-600 w-4 h-4">
@@ -126,22 +141,22 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 mb-1">العنوان الكامل بالتفصيل</label>
-                        <input type="text" id="address" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white" placeholder="رقم المنزل، اسم الشارع أو البلدية">
+                        <label class="block text-xs font-bold text-gray-700 mb-1">العنوان بالتفصيل</label>
+                        <input type="text" id="address" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white" placeholder="رقم الشارع، الحي، البلدية">
                     </div>
 
-                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-2.5 text-sm shadow-inner mt-4">
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-2 text-xs font-semibold shadow-inner mt-4">
                         <div class="flex justify-between items-center text-gray-600">
                             <span>سعر المنتج</span>
-                            <span id="subtotalText" class="font-bold">2680.00 د.ج</span>
+                            <span id="subtotalText">2680 د.ج</span>
                         </div>
                         <div class="flex justify-between items-center text-gray-600 border-b border-gray-200 pb-2">
                             <span>سعر التوصيل</span>
-                            <span id="shippingText" class="font-bold text-amber-700">؟</span>
+                            <span id="shippingText" class="text-amber-700 font-bold">يرجى اختيار الولاية</span>
                         </div>
-                        <div class="flex justify-between items-center text-gray-900 pt-1 font-black text-base">
+                        <div class="flex justify-between items-center text-gray-900 pt-1 font-black text-sm">
                             <span>المجموع الإجمالي</span>
-                            <span id="totalText" class="text-teal-700">2680.00 د.ج</span>
+                            <span id="totalText" class="text-teal-700 text-base">2680 د.ج</span>
                         </div>
                     </div>
                 </form>
@@ -150,38 +165,36 @@
         </div>
     </div>
 
-    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3.5 z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3.5 z-30 shadow-[0_-4px_12px_rgba(0,0,0,0.06)]">
         <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
             <div class="flex flex-col">
                 <span class="text-[10px] text-gray-400 font-bold uppercase leading-none">الإجمالي الكلي</span>
                 <span id="footerTotal" class="text-xl font-black text-teal-600 leading-tight">2680 د.ج</span>
             </div>
-            <button onclick="submitOrder()" id="submitBtn" class="flex-1 max-w-md bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md active:scale-[0.99] transition-all text-center flex items-center justify-center gap-2 text-sm md:text-base">
+            <button onclick="submitOrder()" id="submitBtn" class="flex-1 max-w-md bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold py-3 px-5 rounded-xl shadow active:scale-[0.99] transition-all text-center flex items-center justify-center gap-2 text-sm">
                 <i class="fa-solid fa-basket-shopping"></i>
                 تأكيد الطلب - الدفع عند الاستلام
             </button>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
     <script>
-        // --- إعدادات الربط المباشر مع Supabase ---
         const SUPABASE_URL = 'https://ukmpamuyakbeewbbkhxc.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_-mFgnkFPzb2iBNqZXmAHcA_Qpvp1S38';
-        const _supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+        
+        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-        // متغيرات التحكم بالأسعار والعروض المستهدفة
         let selectedProductPrice = 2680;
         let selectedQuantity = 1;
         let currentSlide = 0;
         const totalSlides = 3;
-        let dbWilayas = []; // مصفوفة لتخزين بيانات الولايات القادمة من قاعدة البيانات
+        let loadedWilayas = [];
 
         window.addEventListener('DOMContentLoaded', () => {
             initCarousel();
-            fetchWilayasFromDB();
+            fetchWilayasFromSupabase();
         });
 
-        // --- التحكم الكامل بالسلايدر التلقائي ---
         function initCarousel() {
             const dotsContainer = document.getElementById('carouselDots');
             for(let i=0; i<totalSlides; i++) {
@@ -190,7 +203,7 @@
                 dot.onclick = () => showSlide(i);
                 dotsContainer.appendChild(dot);
             }
-            setInterval(() => { nextSlide(); }, 4500);
+            setInterval(() => { nextSlide(); }, 5000);
         }
 
         function showSlide(index) {
@@ -204,152 +217,139 @@
         function nextSlide() { showSlide(currentSlide + 1); }
         function prevSlide() { showSlide(currentSlide - 1); }
 
-        // --- جلب الولايات ديناميكياً من جدول wilayas_store بـ Supabase ---
-        async function fetchWilayasFromDB() {
-            const select = document.getElementById('wilayaSelect');
-            
-            if (_supabase) {
-                try {
-                    const { data, error } = await _supabase.from('wilayas_store').select('*').order('number', { ascending: true });
-                    if (error) throw error;
-                    dbWilayas = data;
-                } catch (err) {
-                    console.error("فشل جلب الولايات من DB، سيتم استخدام البيانات المحلية الاحتياطية:", err.message);
-                    dbWilayas = getFallbackWilayas();
-                }
-            } else {
-                dbWilayas = getFallbackWilayas();
+        async function fetchWilayasFromSupabase() {
+            const selectElement = document.getElementById('wilayaSelect');
+            if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
+                selectElement.innerHTML = `<option value="">-- خطأ: لم يتم ربط مفاتيح سوبابيس --</option>`;
+                return;
             }
+            try {
+                const { data, error } = await supabaseClient
+                    .from('wilayas_store')
+                    .select('id, number, name, delivery_domicile, delivery_post')
+                    .order('number', { ascending: true });
 
-            // تعبئة حقل Dropdown بالبيانات
-            dbWilayas.forEach(w => {
-                const opt = document.createElement('option');
-                opt.value = w.id;
-                opt.textContent = `${w.number} - ${w.name}`;
-                select.appendChild(opt);
-            });
+                if (error) throw error;
+                loadedWilayas = data;
+                
+                selectElement.innerHTML = `<option value="">-- اختر الولاية من القائمة --</option>`;
+                loadedWilayas.forEach(wilaya => {
+                    const option = document.createElement('option');
+                    option.value = wilaya.id;
+                    option.textContent = `${wilaya.number} - ${wilaya.name}`;
+                    selectElement.appendChild(option);
+                });
+            } catch (err) {
+                selectElement.innerHTML = `<option value="">-- فشل جلب الولايات --</option>`;
+            }
             calculateShipping();
         }
 
-        // --- تحديث كارت السعر والعرض المختصر للكمية ---
-        function updateOfferPrice(price, qty, element) {
+        function switchOffer(price, qty) {
             selectedProductPrice = price;
             selectedQuantity = qty;
-            
-            document.getElementById('offer1Container').className = qty === 1 ? 
-                "relative flex items-center justify-between p-4 border-2 border-emerald-500 bg-emerald-50/40 rounded-xl cursor-pointer transition-all select-none" : 
-                "relative flex items-center justify-between p-4 border border-gray-200 rounded-xl cursor-pointer hover:border-emerald-300 transition-all select-none";
-            
-            document.getElementById('offer2Container').className = qty === 2 ? 
-                "relative flex items-center justify-between p-4 border-2 border-emerald-500 bg-emerald-50/40 rounded-xl cursor-pointer transition-all select-none" : 
-                "relative flex items-center justify-between p-4 border border-gray-200 rounded-xl cursor-pointer hover:border-emerald-300 transition-all select-none";
-            
+            document.getElementById('containerOffer1').className = qty === 1 ? 
+                "relative flex items-center justify-between p-3.5 border-2 border-emerald-500 bg-emerald-50/40 rounded-xl cursor-pointer transition-all select-none" : 
+                "relative flex items-center justify-between p-3.5 border border-gray-200 rounded-xl cursor-pointer hover:border-emerald-300 transition-all select-none";
+            document.getElementById('containerOffer2').className = qty === 2 ? 
+                "relative flex items-center justify-between p-3.5 border-2 border-emerald-500 bg-emerald-50/40 rounded-xl cursor-pointer transition-all select-none" : 
+                "relative flex items-center justify-between p-3.5 border border-gray-200 rounded-xl cursor-pointer hover:border-emerald-300 transition-all select-none";
             calculateShipping();
         }
 
-        // --- حساب الفاتورة الفورية بناء على السعر ونوع التوصيل من جدول wilayas_store ---
         function calculateShipping() {
-            const wilayaId = document.getElementById('wilayaSelect').value;
-            const deliveryType = document.querySelector('input[name="delivery_type"]:checked').value;
-            
-            let shippingCost = 0;
-            let isWilayaSelected = false;
+            const selectedWilayaId = document.getElementById('wilayaSelect').value;
+            const chosenDeliveryType = document.querySelector('input[name="delivery_type"]:checked').value;
+            let currentShippingPrice = 0;
+            let isWilayaReady = false;
 
-            if (wilayaId) {
-                const wilaya = dbWilayas.find(w => w.id == wilayaId);
-                if (wilaya) {
-                    shippingCost = (deliveryType === 'domicile') ? wilaya.delivery_domicile : wilaya.delivery_post;
-                    isWilayaSelected = true;
+            if (selectedWilayaId && loadedWilayas.length > 0) {
+                const matchedWilaya = loadedWilayas.find(w => w.id == selectedWilayaId);
+                if (matchedWilaya) {
+                    currentShippingPrice = (chosenDeliveryType === 'domicile') ? matchedWilaya.delivery_domicile : matchedWilaya.delivery_post;
+                    isWilayaReady = true;
                 }
             }
 
-            document.getElementById('subtotalText').textContent = `${selectedProductPrice.toLocaleString()}.00 د.ج`;
-            
-            if (isWilayaSelected) {
-                document.getElementById('shippingText').textContent = `${shippingCost.toLocaleString()}.00 د.ج`;
-                document.getElementById('shippingText').className = "font-bold text-gray-900";
-                
-                let grandTotal = selectedProductPrice + shippingCost;
-                document.getElementById('totalText').textContent = `${grandTotal.toLocaleString()}.00 د.ج`;
-                document.getElementById('footerTotal').textContent = `${grandTotal} د.ج`;
+            document.getElementById('subtotalText').textContent = `${selectedProductPrice} د.ج`;
+            if (isWilayaReady) {
+                document.getElementById('shippingText').textContent = `${currentShippingPrice} د.ج`;
+                document.getElementById('shippingText').className = "text-gray-950 font-bold";
+                let calculatedTotal = selectedProductPrice + currentShippingPrice;
+                document.getElementById('totalText').textContent = `${calculatedTotal} د.ج`;
+                document.getElementById('footerTotal').textContent = `${calculatedTotal} د.ج`;
             } else {
-                document.getElementById('shippingText').textContent = "؟";
-                document.getElementById('shippingText').className = "font-bold text-amber-700";
-                document.getElementById('totalText').textContent = `${selectedProductPrice.toLocaleString()}.00 د.ج`;
+                document.getElementById('shippingText').textContent = "يرجى اختيار الولاية";
+                document.getElementById('shippingText').className = "text-amber-700 font-bold animate-pulse";
+                document.getElementById('totalText').textContent = `${selectedProductPrice} د.ج`;
                 document.getElementById('footerTotal').textContent = `${selectedProductPrice} د.ج`;
             }
         }
 
-        // --- إرسال الطلب النهائي والتحقق الصارم من الشروط والأرقام ---
         async function submitOrder() {
-            const fullname = document.getElementById('fullname').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+            const customerName = document.getElementById('customer_name').value.trim();
+            const phoneNumber = document.getElementById('phone_number').value.trim();
             const wilayaId = document.getElementById('wilayaSelect').value;
             const deliveryType = document.querySelector('input[name="delivery_type"]:checked').value;
-            const address = document.getElementById('address').value.trim();
+            const detailedAddress = document.getElementById('address').value.trim();
+            
+            // جلب قيمة اللون المختار حياً من الاستمارة
+            const selectedColor = document.querySelector('input[name="product_color"]:checked').value;
 
-            if (!fullname || !phone || !wilayaId) {
-                alert('الرجاء تعبئة كافة الحقول الإجبارية المعلمة بنجمة (*)');
+            if (!customerName || !phoneNumber || !wilayaId) {
+                alert('من فضلك، املأ جميع الحقول الأساسية المطلوبة والمؤشر عليها بنجمة (*)');
                 return;
             }
 
-            // الشرط الإجباري: التحقق من رقم الهاتف (يبدأ بـ 0 ومتكون من 10 أرقام تماماً)
-            const phoneRegex = /^0\d{9}$/;
-            if (!phoneRegex.test(phone)) {
-                alert('خطأ في رقم الهاتف! يجب أن يتكون من 10 أرقام تماماً ويبدأ بـ 0 (مثال: 0550123456)');
+            const strictPhoneCheck = /^0\d{9}$/;
+            if (!strictPhoneCheck.test(phoneNumber)) {
+                alert('خطأ في رقم الهاتف! يجب أن يتكون من 10 أرقام تماماً ويبدأ بـ 0');
                 return;
             }
 
-            const wilaya = dbWilayas.find(w => w.id == wilayaId);
-            const shippingCost = (deliveryType === 'domicile') ? wilaya.delivery_domicile : wilaya.delivery_post;
-            const finalTotal = selectedProductPrice + shippingCost;
+            const targetWilaya = loadedWilayas.find(w => w.id == wilayaId);
+            const shippingPrice = (deliveryType === 'domicile') ? targetWilaya.delivery_domicile : targetWilaya.delivery_post;
+            const calculatedFinalTotal = selectedProductPrice + shippingPrice;
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> جاري إرسال طلبك بأمان...`;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin ml-2"></i> جاري إرسال طلبك...`;
 
-            // بناء كائن البيانات متوافق 100% مع هيكلية حقول جدول public.orders الخاص بك
-            const orderPayload = {
-                customer_name: fullname,
-                phone_number: phone, // متوافق مع اسم العمود بقاعدة بياناتك
-                address: address || 'لم يتم تحديد عنوان تفصيلي',
+            // إضافة اللون المختار إلى حقول Payload المرسل لـ Supabase
+            const finalOrderPayload = {
+                customer_name: customerName,
+                phone_number: phoneNumber, 
+                address: detailedAddress || 'تم تحديد الولاية فقط',
                 quantity: parseInt(selectedQuantity),
-                total_price: parseFloat(finalTotal),
+                total_price: parseFloat(calculatedFinalTotal),
                 wilaya_id: parseInt(wilayaId),
+                color: selectedColor, // العمود الجديد بقاعدة البيانات
                 status: 'pending'
             };
 
-            if (_supabase) {
-                try {
-                    const { data, error } = await _supabase.from('orders').insert([orderPayload]);
-                    if (error) throw error;
-                    alert('تهانينا! تم تسجيل طلبك للمروحة بنجاح، سيتصل بك فريق الدعم قريباً لتأكيد التوصيل.');
-                    document.getElementById('orderForm').reset();
-                    calculateShipping();
-                } catch (err) {
-                    console.error("خطأ أثناء الإرسال لـ Supabase:", err.message);
-                    alert('عذراً، حدث مشكل في الخادم أثناء الإرسال. يرجى إعادة المحاولة.');
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = `<i class="fa-solid fa-basket-shopping"></i> تأكيد الطلب - الدفع عند الاستلام`;
-                }
-            } else {
-                // محاكاة النجاح في غياب مفاتيح الربط النشطة
-                setTimeout(() => {
-                    alert('وضع المحاكاة: تم فحص وتأكيد الشروط وصحة رقم الهاتف! طلبك جاهز للإدخال لجدول orders بـ Supabase.');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = `<i class="fa-solid fa-basket-shopping"></i> تأكيد الطلب - الدفع عند الاستلام`;
-                }, 1000);
+            if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
+                alert("تم الفحص! يرجى وضع مفاتيح سوبابيس الحقيقية في الأسطر الأولى للـ Script لترحيل الطلب.");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-basket-shopping"></i> تأكيد الطلب - الدفع عند الاستلام`;
+                return;
             }
-        }
 
-        // بيانات احتياطية محلية متطابقة مع جدولك لكي لا تتوقف الصفحة عن العمل قبل ربط المفاتيح
-        function getFallbackWilayas() {
-            return [
-                {id: 16, number: 16, name: 'الجزائر', delivery_domicile: 600, delivery_post: 470},
-                {id: 25, number: 25, name: 'قسنطينة', delivery_domicile: 500, delivery_post: 500},
-                {id: 31, number: 31, name: 'وهران', delivery_domicile: 750, delivery_post: 520}
-            ];
+            try {
+                const { data, error } = await supabaseClient
+                    .from('orders')
+                    .insert([finalOrderPayload]);
+
+                if (error) throw error;
+
+                alert('تم تسجيل طلبك ولونك المفضّل بنجاح! سنتصل بك قريباً للتأكيد.');
+                document.getElementById('orderForm').reset();
+                calculateShipping();
+            } catch (err) {
+                alert(`حدث خطأ أثناء إرسال الطلب: ${err.message}`);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-basket-shopping"></i> تأكيد الطلب - الدفع عند الاستلام`;
+            }
         }
     </script>
 </body>
