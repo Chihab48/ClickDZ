@@ -329,7 +329,7 @@
             const detailedAddress = document.getElementById('address').value.trim();
             
             const selectedColor = document.querySelector('input[name="product_color"]:checked').value;
-
+            
             if (!customerName || !phoneNumber || !wilayaId) {
                 alert('من فضلك، املأ جميع الحقول الأساسية المطلوبة والمؤشر عليها بنجمة (*)');
                 return;
@@ -358,6 +358,7 @@
                 wilaya_id: parseInt(wilayaId),
                 color: selectedColor, 
                 status: 'pending'
+                livraison_post: deliveryType === 'post' ? 'bureau' : 'domicile'
             };
 
             if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
