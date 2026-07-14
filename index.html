@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مروحة RGB المحمولة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -20,16 +20,19 @@
             <div class="space-y-4">
                 <div class="relative w-full overflow-hidden bg-white rounded-2xl shadow-sm aspect-square border border-gray-100">
                     <div id="carouselTrack" class="flex transition-transform duration-500 ease-out h-full w-full">
-                        <img src="rgb_1.jpg"class="class="w-full flex-shrink-0 object-cover h-full">
-                        <img src="https://i5.walmartimages.com.mx/mg/gm/3pp/asr/75c5dc3f-993e-42dd-942d-066bb55e85f2.1a94cf563dea5471ab93ce4272b8f99a.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 0">
-                        <img src="https://img.lazcdn.com/g/ff/kf/Se428e1e4c77b4ef596a647bd9cd7d98c9.jpg_720x720q80.jpg" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 1">
-                        <img src="https://znice.mx/wp-content/uploads/2024/12/Ventilador-Iluminacion-RGB-Electrico4.webp" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 3">
+                        <img src="rgb_1.jpg" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 0">
+                        <img src="rgb_2.jpg" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 1">
+                        <img src="rgb_3.jpg" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 2">
+                        <img src="https://i5.walmartimages.com.mx/mg/gm/3pp/asr/75c5dc3f-993e-42dd-942d-066bb55e85f2.1a94cf563dea5471ab93ce4272b8f99a.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 3">
+                        <img src="https://img.lazcdn.com/g/ff/kf/Se428e1e4c77b4ef596a647bd9cd7d98c9.jpg_720x720q80.jpg" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 4">
+                        <img src="https://znice.mx/wp-content/uploads/2024/12/Ventilador-Iluminacion-RGB-Electrico4.webp" class="w-full flex-shrink-0 object-cover h-full" alt="مروحة RGB 5">
                     </div>
                     
-                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow transition-all z-10">
+                    <!-- تم تعديل دوال الأسهم: السهم الأيسر ينقلك للتالي، والسهم الأيمن للسابق لتتوافق مع الـ RTL -->
+                    <button onclick="nextSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow transition-all z-10">
                         <i class="fa-solid fa-chevron-left text-xs"></i>
                     </button>
-                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow transition-all z-10">
+                    <button onclick="prevSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 text-gray-800 w-9 h-9 rounded-full flex items-center justify-center shadow transition-all z-10">
                         <i class="fa-solid fa-chevron-right text-xs"></i>
                     </button>
                     
@@ -181,15 +184,16 @@
 
     <script>
         const SUPABASE_URL = 'https://ukmpamuyakbeewbbkhxc.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_-mFgnkFPzb2iBNqZXmAHcA_Qpvp1S';
+        const SUPABASE_KEY = 'sb_publishable_-mFgnkFPzb2iBNqZXmAHcA_Qpvp1S38';
         
         const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
         let selectedProductPrice = 2680;
         let selectedQuantity = 1;
         let currentSlide = 0;
-        const totalSlides = 3;
+        let totalSlides = 0; 
         let loadedWilayas = [];
+        let autoPlayInterval;
 
         window.addEventListener('DOMContentLoaded', () => {
             initCarousel();
@@ -197,26 +201,55 @@
         });
 
         function initCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const images = track.getElementsByTagName('img');
+            totalSlides = images.length; 
+
             const dotsContainer = document.getElementById('carouselDots');
+            dotsContainer.innerHTML = ''; 
+
             for(let i=0; i<totalSlides; i++) {
                 const dot = document.createElement('button');
                 dot.className = `w-2 h-2 rounded-full transition-all ${i===0 ? 'bg-teal-600 w-4' : 'bg-gray-300'}`;
-                dot.onclick = () => showSlide(i);
+                dot.onclick = () => {
+                    showSlide(i);
+                    resetAutoPlay();
+                };
                 dotsContainer.appendChild(dot);
             }
-            setInterval(() => { nextSlide(); }, 5000);
+            startAutoPlay();
         }
 
         function showSlide(index) {
             currentSlide = (index + totalSlides) % totalSlides;
+            
+            // الحل الرياضي الصحيح: قيمة موجبة (بدون علامة السالب) لتعمل بشكل مثالي في وضع RTL المتجاوب
             document.getElementById('carouselTrack').style.transform = `translateX(${currentSlide * 100}%)`;
+            
             const dots = document.getElementById('carouselDots').children;
             for(let i=0; i<dots.length; i++) {
                 dots[i].className = (i === currentSlide) ? "w-2 h-2 rounded-full bg-teal-600 w-4 transition-all" : "w-2 h-2 rounded-full bg-gray-300 transition-all";
             }
         }
-        function nextSlide() { showSlide(currentSlide + 1); }
-        function prevSlide() { showSlide(currentSlide - 1); }
+        
+        function nextSlide() { 
+            showSlide(currentSlide + 1); 
+            resetAutoPlay();
+        }
+        
+        function prevSlide() { 
+            showSlide(currentSlide - 1); 
+            resetAutoPlay();
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => { showSlide(currentSlide + 1); }, 5000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
 
         async function fetchWilayasFromSupabase() {
             const selectElement = document.getElementById('wilayaSelect');
@@ -294,7 +327,6 @@
             const deliveryType = document.querySelector('input[name="delivery_type"]:checked').value;
             const detailedAddress = document.getElementById('address').value.trim();
             
-            // جلب قيمة اللون المختار حياً من الاستمارة
             const selectedColor = document.querySelector('input[name="product_color"]:checked').value;
 
             if (!customerName || !phoneNumber || !wilayaId) {
@@ -316,7 +348,6 @@
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin ml-2"></i> جاري إرسال طلبك...`;
 
-            // إضافة اللون المختار إلى حقول Payload المرسل لـ Supabase
             const finalOrderPayload = {
                 customer_name: customerName,
                 phone_number: phoneNumber, 
@@ -324,7 +355,7 @@
                 quantity: parseInt(selectedQuantity),
                 total_price: parseFloat(calculatedFinalTotal),
                 wilaya_id: parseInt(wilayaId),
-                color: selectedColor, // العمود الجديد بقاعدة البيانات
+                color: selectedColor, 
                 status: 'pending'
             };
 
