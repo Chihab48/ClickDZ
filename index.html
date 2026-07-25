@@ -38,7 +38,7 @@
                     </div>
                     <div class="space-y-1">
                         <div class="text-gray-400 line-through text-base font-semibold">3600 د.ج</div>
-                        <div class="text-4xl font-black text-violet-600">2830 د.ج</div>
+                        <div class="text-4xl font-black text-violet-600">2720 د.ج</div>
                     </div>
                 </div>
 
@@ -46,12 +46,12 @@
                     <label class="block text-xs font-bold text-gray-700 mb-2">اختر العرض المناسب لك:</label>
                     <div class="space-y-2.5">
                         <label id="containerOffer1" class="relative flex items-center justify-between p-3.5 border-2 border-fuchsia-500 bg-fuchsia-50/40 rounded-xl cursor-pointer transition-all select-none">
-                            <input type="radio" name="product_offer" value="1" checked onchange="switchOffer(2830, 1)" class="absolute left-4 top-1/2 -translate-y-1/2 accent-fuchsia-600 w-4.5 h-4.5">
+                            <input type="radio" name="product_offer" value="1" checked onchange="switchOffer(2720, 1)" class="absolute left-4 top-1/2 -translate-y-1/2 accent-fuchsia-600 w-4.5 h-4.5">
                             <div class="pr-1">
                                 <span class="block font-bold text-gray-900 text-sm">عرض قطعة واحدة</span>
                                 <span class="text-[11px] text-gray-500">مروحة واحدة ملونة بقوة كاملة</span>
                             </div>
-                            <span class="font-black text-violet-700 text-base ml-8">2830  د.ج</span>
+                            <span class="font-black text-violet-700 text-base ml-8">2720  د.ج</span>
                         </label>
                         
                         <label id="containerOffer2" class="relative flex items-center justify-between p-3.5 border border-gray-200 rounded-xl cursor-pointer hover:border-fuchsia-300 transition-all select-none">
@@ -118,7 +118,7 @@
                 <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div class="text-sm text-gray-500">
                         <span class="block uppercase tracking-[0.2em] font-black">المجموع الكلي</span>
-                        <span id="footerTotal" class="text-3xl font-black text-violet-700">2830 د.ج</span>
+                        <span id="footerTotal" class="text-3xl font-black text-violet-700">2720 د.ج</span>
                     </div>
                     <button onclick="submitOrder()" id="submitBtn" class="w-full md:max-w-md bg-gradient-to-r from-purple-600 to-violet-700 hover:from-purple-700 hover:to-violet-800 text-white font-bold py-3 px-5 rounded-xl shadow active:scale-[0.99] transition-all text-center flex items-center justify-center gap-2 text-sm">
                         <i class="fa-solid fa-basket-shopping"></i>
@@ -135,7 +135,7 @@
         
         const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-        let selectedProductPrice = 2830;
+        let selectedProductPrice = 2720;
         let selectedQuantity = 1;
         let loadedWilayas = [];
 
