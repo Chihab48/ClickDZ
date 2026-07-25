@@ -117,12 +117,12 @@
                         </label>
                         
                         <label id="containerOffer2" class="relative flex items-center justify-between p-3 sm:p-3.5 border-2 rounded-xl cursor-pointer transition-all select-none offer-card">
-                            <input type="radio" name="product_offer" value="2" onchange="switchOffer(5100, 2)" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 accent-fuchsia-600 w-4 h-4 sm:w-4.5 sm:h-4.5">
+                            <input type="radio" name="product_offer" value="2" onchange="switchOffer(5200, 2)" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 accent-fuchsia-600 w-4 h-4 sm:w-4.5 sm:h-4.5">
                             <div class="pr-1">
                                 <span class="block font-bold text-gray-900 text-xs sm:text-sm">عرض قطعتين (2)</span>
                                 <span class="text-[10px] sm:text-[11px] text-gray-500">احصل على جهازين بسعر مخفض وشحن موحد</span>
                             </div>
-                            <span class="font-black text-gray-900 text-sm sm:text-base ml-6 sm:ml-8">4800 د.ج</span>
+                            <span class="font-black text-gray-900 text-sm sm:text-base ml-6 sm:ml-8">5200 د.ج</span>
                         </label>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
 
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">الولاية *</label>
-                        <select id="wilayaSelect" required onchange="calculateShipping()" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white">
+                        <select id="wilayaSelect" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white">
                             <option value="">-- اختر الولاية من القائمة --</option>
                         </select>
                     </div>
@@ -217,7 +217,7 @@
             try {
                 const { data, error } = await supabaseClient
                     .from('wilayas_store')
-                    .select('id, number, name, delivery_domicile, delivery_post')
+                    .select('id, number, name')
                     .order('number', { ascending: true });
 
                 if (error) throw error;
@@ -233,7 +233,7 @@
             } catch (err) {
                 selectElement.innerHTML = `<option value="">-- فشل جلب الولايات --</option>`;
             }
-            calculateShipping();
+            updateTotalPrice();
         }
 
         function switchOffer(price, qty) {
@@ -255,38 +255,18 @@
                 offer2.classList.add('selected');
             }
             
-            calculateShipping();
+            updateTotalPrice();
         }
 
-        function calculateShipping() {
-            const selectedWilayaId = document.getElementById('wilayaSelect').value;
-            const chosenDeliveryType = document.querySelector('input[name="delivery_type"]:checked')?.value || 'domicile';
-            let currentShippingPrice = 0;
-            let isWilayaReady = false;
-
-            if (selectedWilayaId && loadedWilayas.length > 0) {
-                const matchedWilaya = loadedWilayas.find(w => w.id == selectedWilayaId);
-                if (matchedWilaya) {
-                    currentShippingPrice = (chosenDeliveryType === 'domicile') ? matchedWilaya.delivery_domicile : matchedWilaya.delivery_post;
-                    isWilayaReady = true;
-                }
-            }
-
-            const productTotal = selectedProductPrice;
-            let finalTotal = productTotal;
-
-            if (isWilayaReady) {
-                finalTotal = selectedProductPrice + currentShippingPrice;
-            }
-
-            document.getElementById('footerTotal').textContent = `${finalTotal} د.ج`;
+        function updateTotalPrice() {
+            // Just show the product price, no shipping added
+            document.getElementById('footerTotal').textContent = `${selectedProductPrice} د.ج`;
         }
 
         async function submitOrder() {
             const customerName = document.getElementById('customer_name').value.trim();
             const phoneNumber = document.getElementById('phone_number').value.trim();
             const wilayaId = document.getElementById('wilayaSelect').value;
-            const deliveryType = document.querySelector('input[name="delivery_type"]:checked')?.value || 'domicile';
             const detailedAddress = document.getElementById('address').value.trim();
             
             const selectedColor = document.querySelector('input[name="product_color"]:checked').value;
@@ -302,10 +282,6 @@
                 return;
             }
 
-            const targetWilaya = loadedWilayas.find(w => w.id == wilayaId);
-            const shippingPrice = (deliveryType === 'domicile') ? targetWilaya.delivery_domicile : targetWilaya.delivery_post;
-            const calculatedFinalTotal = selectedProductPrice + shippingPrice;
-
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin ml-2"></i> جاري إرسال طلبك...`;
@@ -315,11 +291,11 @@
                 phone_number: phoneNumber, 
                 address: detailedAddress || 'تم تحديد الولاية فقط',
                 quantity: parseInt(selectedQuantity),
-                total_price: parseFloat(calculatedFinalTotal),
+                total_price: parseFloat(selectedProductPrice),
                 wilaya_id: parseInt(wilayaId),
                 color: selectedColor, 
                 status: 'pending',
-                livraison_post: deliveryType === 'post' ? 'bureau' : 'domicile'
+                livraison_post: 'domicile'
             };
 
             if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
@@ -338,7 +314,7 @@
 
                 alert('تم تسجيل طلبك ولونك المفضّل بنجاح! سنتصل بك قريباً للتأكيد.');
                 document.getElementById('orderForm').reset();
-                calculateShipping();
+                updateTotalPrice();
             } catch (err) {
                 alert(`حدث خطأ أثناء إرسال الطلب: ${err.message}`);
             } finally {
