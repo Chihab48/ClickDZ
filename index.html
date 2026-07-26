@@ -386,8 +386,8 @@
                 color: selectedColor, 
                 status: 'pending',
                 type_livraison: deliveryType,
-                product_price: selectedProductPrice,
-                delivery_price: currentDeliveryPrice
+                total_price: selectedProductPrice + currentDeliveryPrice,
+               
             };
 
             if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
