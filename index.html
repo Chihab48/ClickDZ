@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مروحة RGB المحمولة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Preconnect to external CDNs for faster DNS & TLS negotiation -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://ukmpamuyakbeewbbkhxc.supabase.co" crossorigin>
+
+    <!-- Font Awesome moved to HEAD so icons render cleanly on first render -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
     <style>
-        body { font-family: 'Cairo', sans-serif; }
+        /* Use system fonts for faster loading */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", sans-serif;
+        }
         
         /* Fix for mobile content being cut off */
         .product-image-container {
@@ -69,7 +78,191 @@
         .delivery-box .delivery-price {
             font-size: 0.65rem;
         }
+
+        /* Custom utility classes to replace Tailwind */
+        .max-w-6xl { max-width: 72rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .pb-20 { padding-bottom: 5rem; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .gap-4 { gap: 1rem; }
+        .items-start { align-items: flex-start; }
+        .w-full { width: 100%; }
+        .overflow-hidden { overflow: hidden; }
+        .bg-gray-100 { background-color: #f3f4f6; }
+        .bg-gray-50 { background-color: #f9fafb; }
+        .bg-white { background-color: #ffffff; }
+        .object-contain { object-fit: contain; }
+        .h-full { height: 100%; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .border { border-width: 1px; border-style: solid; }
+        .border-gray-100 { border-color: #f3f4f6; }
+        .border-gray-200 { border-color: #e5e7eb; }
+        .border-gray-300 { border-color: #d1d5db; }
+        .border-2 { border-width: 2px; }
+        .text-white { color: #ffffff; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-gray-500 { color: #6b7280; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-700 { color: #374151; }
+        .text-gray-800 { color: #1f2937; }
+        .text-gray-900 { color: #111827; }
+        .text-violet-600 { color: #7c3aed; }
+        .text-violet-700 { color: #6d28d9; }
+        .text-fuchsia-600 { color: #c026d3; }
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-base { font-size: 1rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .font-bold { font-weight: 700; }
+        .font-black { font-weight: 900; }
+        .font-semibold { font-weight: 600; }
+        .leading-tight { line-height: 1.25; }
+        .leading-relaxed { line-height: 1.625; }
+        .tracking-wide { letter-spacing: 0.025em; }
+        .italic { font-style: italic; }
+        .antialiased { -webkit-font-smoothing: antialiased; }
+        .min-h-screen { min-height: 100vh; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .left-3 { left: 0.75rem; }
+        .top-1/2 { top: 50%; }
+        .-translate-y-1/2 { transform: translateY(-50%); }
+        .accent-fuchsia-600 { accent-color: #c026d3; }
+        .w-4 { width: 1rem; }
+        .h-4 { height: 1rem; }
+        .w-5 { width: 1.25rem; }
+        .h-5 { height: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .h-6 { height: 1.5rem; }
+        .rounded-full { border-radius: 9999px; }
+        .bg-blue-600 { background-color: #2563eb; }
+        .bg-emerald-500 { background-color: #10b981; }
+        .bg-pink-500 { background-color: #ec4899; }
+        .shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); }
+        .ring-1 { --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; box-shadow: 0 0 transparent, 0 0 transparent, 0 0 #d1d5db; }
+        .ring-gray-300 { --tw-ring-color: #d1d5db; }
+        .peer-checked\:ring-4:checked ~ * { --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 #c026d3; }
+        .peer-checked\:ring-fuchsia-500:checked ~ * { --tw-ring-color: #d946ef; }
+        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; }
+        .cursor-pointer { cursor: pointer; }
+        .cursor-not-allowed { cursor: not-allowed; }
+        .select-none { user-select: none; }
+        .opacity-60 { opacity: 0.6; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-1 { gap: 0.25rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-5 { gap: 1.25rem; }
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+        .pl-1 { padding-left: 0.25rem; }
+        .pr-1 { padding-right: 0.25rem; }
+        .ml-6 { margin-left: 1.5rem; }
+        .mt-0 { margin-top: 0; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .space-y-1 > * + * { margin-top: 0.25rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-5 > * + * { margin-top: 1.25rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to)); }
+        .from-fuchsia-600 { --tw-gradient-from: #c026d3; --tw-gradient-to: rgba(192, 38, 211, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-violet-600 { --tw-gradient-to: #7c3aed; }
+        .from-purple-600 { --tw-gradient-from: #9333ea; --tw-gradient-to: rgba(147, 51, 234, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-violet-700 { --tw-gradient-to: #6d28d9; }
+        .hover\:from-purple-700:hover { --tw-gradient-from: #7e22ce; }
+        .hover\:to-violet-800:hover { --tw-gradient-to: #5b21b6; }
+        .hover\:bg-gray-50:hover { background-color: #f9fafb; }
+        .focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
+        .focus\:ring-2:focus { --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 #14b8a6; box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), 0 0 transparent; }
+        .focus\:ring-teal-500:focus { --tw-ring-color: #14b8a6; }
+        .text-left { text-align: left; }
+        .text-center { text-align: center; }
+        .uppercase { text-transform: uppercase; }
+        .block { display: block; }
+        .inline-block { display: inline-block; }
+        .relative { position: relative; }
+        .z-10 { z-index: 10; }
+        .border-t { border-top-width: 1px; border-top-style: solid; }
+        .border-t-gray-200 { border-top-color: #e5e7eb; }
+        .pt-2 { padding-top: 0.5rem; }
+        .pb-28 { padding-bottom: 7rem; }
+
+        /* Mobile responsive */
+        @media (min-width: 640px) {
+            .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+            .sm\:py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+            .sm\:pb-28 { padding-bottom: 7rem; }
+            .sm\:gap-4 { gap: 1rem; }
+            .sm\:gap-5 { gap: 1.25rem; }
+            .sm\:gap-6 { gap: 1.5rem; }
+            .sm\:p-3 { padding: 0.75rem; }
+            .sm\:p-3\.5 { padding: 0.875rem; }
+            .sm\:p-6 { padding: 1.5rem; }
+            .sm\:text-sm { font-size: 0.875rem; }
+            .sm\:text-base { font-size: 1rem; }
+            .sm\:text-2xl { font-size: 1.5rem; }
+            .sm\:text-3xl { font-size: 1.875rem; }
+            .sm\:rounded-3xl { border-radius: 1.5rem; }
+            .sm\:rounded-\[2rem\] { border-radius: 2rem; }
+            .sm\:left-4 { left: 1rem; }
+            .sm\:w-4\.5 { width: 1.125rem; }
+            .sm\:h-4\.5 { height: 1.125rem; }
+            .sm\:w-6 { width: 1.5rem; }
+            .sm\:h-6 { height: 1.5rem; }
+            .sm\:ml-8 { margin-left: 2rem; }
+            .sm\:mt-3 { margin-top: 0.75rem; }
+            .sm\:mt-4 { margin-top: 1rem; }
+            .sm\:text-xs { font-size: 0.75rem; }
+            .sm\:space-y-4 > * + * { margin-top: 1rem; }
+            .sm\:space-y-5 > * + * { margin-top: 1.25rem; }
+        }
+
+        @media (min-width: 768px) {
+            .md\:py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+            .md\:gap-8 { gap: 2rem; }
+            .md\:text-base { font-size: 1rem; }
+            .md\:text-3xl { font-size: 1.875rem; }
+            .md\:text-4xl { font-size: 2.25rem; }
+            .md\:max-w-md { max-width: 28rem; }
+            .md\:flex-row { flex-direction: row; }
+            .md\:items-center { align-items: center; }
+            .md\:justify-between { justify-content: space-between; }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .lg\:text-4xl { font-size: 2.25rem; }
+        }
     </style>
+
+    <!-- Load Supabase asynchronously with defer -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased min-h-screen">
 
@@ -79,13 +272,14 @@
             <!-- Images Section - Responsive -->
             <div class="space-y-3 sm:space-y-4">
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container" style="min-height: 350px; max-height: 80vh;">
-                    <img src="img1.jpg" alt="Product image 1" class="w-full h-full object-contain"style="min-height: 350px; max-height: 80vh;" />
+                    <!-- Added fetchpriority="high" for the main product hero image -->
+                    <img src="img1.jpg" alt="Product image 1" class="w-full h-full object-contain" fetchpriority="high" />
                 </div>
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container">
-                    <img src="rgb_2.jpg" alt="Product image 2" class="w-full h-full object-contain" />
+                    <img src="rgb_2.jpg" alt="Product image 2" class="w-full h-full object-contain" loading="lazy" />
                 </div>
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container">
-                    <img src="img2.jpg" alt="Product image 3" class="w-full h-full object-contain" />
+                    <img src="img2.jpg" alt="Product image 3" class="w-full h-full object-contain" loading="lazy" />
                 </div>
             </div>
 
@@ -185,7 +379,7 @@
                         <input type="text" id="address" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white" placeholder="البلدية، الحي، رقم الشارع">
                     </div>
 
-                    <!-- Delivery Type Selection - Smaller -->
+                    <!-- Delivery Type Selection -->
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-2">طريقة التوصيل *</label>
                         <div class="grid grid-cols-2 gap-2">
@@ -231,7 +425,7 @@
                 <!-- Footer -->
                 <div class="flex flex-col gap-3">
                     <button onclick="submitOrder()" id="submitBtn" class="w-full bg-gradient-to-r from-purple-600 to-violet-700 hover:from-purple-700 hover:to-violet-800 text-white font-bold py-3 px-5 rounded-xl shadow active:scale-[0.99] transition-all text-center flex items-center justify-center gap-2 text-xs sm:text-sm">
-                        <i class="fa-solid fa-basket-shopping"></i>
+                        <i class="fas fa-basket-shopping"></i>
                         تأكيد الطلب - الدفع عند الاستلام
                     </button>
                 </div>
@@ -243,7 +437,7 @@
         const SUPABASE_URL = 'https://ukmpamuyakbeewbbkhxc.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_-mFgnkFPzb2iBNqZXmAHcA_Qpvp1S38';
         
-        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+        let supabaseClient = null;
 
         let selectedProductPrice = 2000;
         let selectedQuantity = 1;
@@ -252,7 +446,10 @@
         let currentWilayaData = null;
         let wilayaSelected = false;
 
-        window.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.supabase) {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            }
             fetchWilayasFromSupabase();
         });
 
@@ -288,15 +485,12 @@
             selectedProductPrice = price;
             selectedQuantity = qty;
             
-            // Get both containers
             const offer1 = document.getElementById('containerOffer1');
             const offer2 = document.getElementById('containerOffer2');
             
-            // Remove selected class from both
             offer1.classList.remove('selected');
             offer2.classList.remove('selected');
             
-            // Add selected class to the chosen one
             if (qty === 1) {
                 offer1.classList.add('selected');
             } else if (qty === 2) {
@@ -310,17 +504,14 @@
             const selectedWilayaId = document.getElementById('wilayaSelect').value;
             const deliveryType = document.querySelector('input[name="livraison_post"]:checked')?.value || 'domicile';
             
-            // Check if wilaya is selected
             wilayaSelected = selectedWilayaId && selectedWilayaId !== '';
             
-            // Get wilaya data
             if (wilayaSelected && loadedWilayas.length > 0) {
                 currentWilayaData = loadedWilayas.find(w => w.id == selectedWilayaId);
             } else {
                 currentWilayaData = null;
             }
             
-            // Calculate delivery price
             let deliveryPrice = 0;
             let deliveryDisplay = '-';
             
@@ -332,15 +523,12 @@
             }
             currentDeliveryPrice = deliveryPrice;
             
-            // Calculate total
             const total = wilayaSelected ? selectedProductPrice + deliveryPrice : selectedProductPrice;
             
-            // Update display
             document.getElementById('displayProductPrice').textContent = `${selectedProductPrice} د.ج`;
             document.getElementById('displayDeliveryPrice').textContent = deliveryDisplay;
             document.getElementById('displayTotalPrice').textContent = wilayaSelected ? `${total} د.ج` : `${selectedProductPrice} د.ج`;
             
-            // Update delivery option prices
             if (currentWilayaData) {
                 document.getElementById('domicilePrice').textContent = `${currentWilayaData.delivery_domicile} د.ج`;
                 document.getElementById('postPrice').textContent = `${currentWilayaData.delivery_post} د.ج`;
@@ -409,9 +597,7 @@
 
                 alert('تم تسجيل طلبك ولونك المفضّل بنجاح! سنتصل بك قريباً للتأكيد.');
                 document.getElementById('orderForm').reset();
-                // Reset delivery type to default
                 document.querySelector('input[name="livraison_post"][value="domicile"]').checked = true;
-                // Reset wilaya select
                 document.getElementById('wilayaSelect').value = '';
                 calculateTotal();
             } catch (err) {
@@ -423,4 +609,4 @@
         }
     </script>
 </body>
-</html> 
+</html>
