@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مروحة RGB المحمولة</title>
+    
+    <!-- Use system fonts instead of Google Fonts -->
     <style>
-        /* Font fallback - system fonts */
+        /* Use system fonts for faster loading */
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", sans-serif;
         }
         
         /* Fix for mobile content being cut off */
@@ -69,24 +71,185 @@
             font-size: 0.65rem;
         }
 
-        /* SVG Icons instead of Font Awesome */
-        .icon-truck, .icon-envelope {
-            display: inline-block;
-            width: 1.2rem;
-            height: 1.2rem;
-            fill: none;
-            stroke: #d946ef;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        /* Custom utility classes to replace Tailwind */
+        .max-w-6xl { max-width: 72rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .pb-20 { padding-bottom: 5rem; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .gap-4 { gap: 1rem; }
+        .items-start { align-items: flex-start; }
+        .w-full { width: 100%; }
+        .overflow-hidden { overflow: hidden; }
+        .bg-gray-100 { background-color: #f3f4f6; }
+        .bg-gray-50 { background-color: #f9fafb; }
+        .bg-white { background-color: #ffffff; }
+        .object-contain { object-fit: contain; }
+        .h-full { height: 100%; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .border { border-width: 1px; border-style: solid; }
+        .border-gray-100 { border-color: #f3f4f6; }
+        .border-gray-200 { border-color: #e5e7eb; }
+        .border-gray-300 { border-color: #d1d5db; }
+        .border-2 { border-width: 2px; }
+        .text-white { color: #ffffff; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-gray-500 { color: #6b7280; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-700 { color: #374151; }
+        .text-gray-800 { color: #1f2937; }
+        .text-gray-900 { color: #111827; }
+        .text-violet-600 { color: #7c3aed; }
+        .text-violet-700 { color: #6d28d9; }
+        .text-fuchsia-600 { color: #c026d3; }
+        .text-xs { font-size: 0.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-base { font-size: 1rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .font-bold { font-weight: 700; }
+        .font-black { font-weight: 900; }
+        .font-semibold { font-weight: 600; }
+        .leading-tight { line-height: 1.25; }
+        .leading-relaxed { line-height: 1.625; }
+        .tracking-wide { letter-spacing: 0.025em; }
+        .italic { font-style: italic; }
+        .antialiased { -webkit-font-smoothing: antialiased; }
+        .min-h-screen { min-height: 100vh; }
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .left-3 { left: 0.75rem; }
+        .top-1/2 { top: 50%; }
+        .-translate-y-1/2 { transform: translateY(-50%); }
+        .accent-fuchsia-600 { accent-color: #c026d3; }
+        .w-4 { width: 1rem; }
+        .h-4 { height: 1rem; }
+        .w-5 { width: 1.25rem; }
+        .h-5 { height: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .h-6 { height: 1.5rem; }
+        .rounded-full { border-radius: 9999px; }
+        .bg-blue-600 { background-color: #2563eb; }
+        .bg-emerald-500 { background-color: #10b981; }
+        .bg-pink-500 { background-color: #ec4899; }
+        .shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); }
+        .ring-1 { --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 transparent; box-shadow: 0 0 transparent, 0 0 transparent, 0 0 #d1d5db; }
+        .ring-gray-300 { --tw-ring-color: #d1d5db; }
+        .peer-checked\:ring-4:checked ~ * { --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 #c026d3; }
+        .peer-checked\:ring-fuchsia-500:checked ~ * { --tw-ring-color: #d946ef; }
+        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; }
+        .cursor-pointer { cursor: pointer; }
+        .cursor-not-allowed { cursor: not-allowed; }
+        .select-none { user-select: none; }
+        .opacity-60 { opacity: 0.6; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-1 { gap: 0.25rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-5 { gap: 1.25rem; }
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+        .pl-1 { padding-left: 0.25rem; }
+        .pr-1 { padding-right: 0.25rem; }
+        .ml-6 { margin-left: 1.5rem; }
+        .mt-0 { margin-top: 0; }
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .space-y-1 > * + * { margin-top: 0.25rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-5 > * + * { margin-top: 1.25rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to)); }
+        .from-fuchsia-600 { --tw-gradient-from: #c026d3; --tw-gradient-to: rgba(192, 38, 211, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-violet-600 { --tw-gradient-to: #7c3aed; }
+        .from-purple-600 { --tw-gradient-from: #9333ea; --tw-gradient-to: rgba(147, 51, 234, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-violet-700 { --tw-gradient-to: #6d28d9; }
+        .hover\:from-purple-700:hover { --tw-gradient-from: #7e22ce; }
+        .hover\:to-violet-800:hover { --tw-gradient-to: #5b21b6; }
+        .hover\:bg-gray-50:hover { background-color: #f9fafb; }
+        .focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
+        .focus\:ring-2:focus { --tw-ring-offset-shadow: 0 0 transparent; --tw-ring-shadow: 0 0 #14b8a6; box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), 0 0 transparent; }
+        .focus\:ring-teal-500:focus { --tw-ring-color: #14b8a6; }
+        .text-left { text-align: left; }
+        .text-center { text-align: center; }
+        .uppercase { text-transform: uppercase; }
+        .block { display: block; }
+        .inline-block { display: inline-block; }
+        .relative { position: relative; }
+        .z-10 { z-index: 10; }
+        .border-t { border-top-width: 1px; border-top-style: solid; }
+        .border-t-gray-200 { border-top-color: #e5e7eb; }
+        .pt-2 { padding-top: 0.5rem; }
+        .pb-28 { padding-bottom: 7rem; }
+
+        /* Mobile responsive */
+        @media (min-width: 640px) {
+            .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+            .sm\:py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+            .sm\:pb-28 { padding-bottom: 7rem; }
+            .sm\:gap-4 { gap: 1rem; }
+            .sm\:gap-5 { gap: 1.25rem; }
+            .sm\:gap-6 { gap: 1.5rem; }
+            .sm\:p-3 { padding: 0.75rem; }
+            .sm\:p-3\.5 { padding: 0.875rem; }
+            .sm\:p-6 { padding: 1.5rem; }
+            .sm\:text-sm { font-size: 0.875rem; }
+            .sm\:text-base { font-size: 1rem; }
+            .sm\:text-2xl { font-size: 1.5rem; }
+            .sm\:text-3xl { font-size: 1.875rem; }
+            .sm\:rounded-3xl { border-radius: 1.5rem; }
+            .sm\:rounded-\[2rem\] { border-radius: 2rem; }
+            .sm\:left-4 { left: 1rem; }
+            .sm\:w-4\.5 { width: 1.125rem; }
+            .sm\:h-4\.5 { height: 1.125rem; }
+            .sm\:w-6 { width: 1.5rem; }
+            .sm\:h-6 { height: 1.5rem; }
+            .sm\:ml-8 { margin-left: 2rem; }
+            .sm\:mt-3 { margin-top: 0.75rem; }
+            .sm\:mt-4 { margin-top: 1rem; }
+            .sm\:text-xs { font-size: 0.75rem; }
+            .sm\:space-y-4 > * + * { margin-top: 1rem; }
+            .sm\:space-y-5 > * + * { margin-top: 1.25rem; }
         }
 
-        .icon-truck {
-            margin-bottom: 0.25rem;
+        @media (min-width: 768px) {
+            .md\:py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+            .md\:gap-8 { gap: 2rem; }
+            .md\:text-base { font-size: 1rem; }
+            .md\:text-3xl { font-size: 1.875rem; }
+            .md\:text-4xl { font-size: 2.25rem; }
+            .md\:max-w-md { max-width: 28rem; }
+            .md\:flex-row { flex-direction: row; }
+            .md\:items-center { align-items: center; }
+            .md\:justify-between { justify-content: space-between; }
         }
 
-        .icon-envelope {
-            margin-bottom: 0.25rem;
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .lg\:text-4xl { font-size: 2.25rem; }
         }
     </style>
 </head>
@@ -98,13 +261,13 @@
             <!-- Images Section - Responsive -->
             <div class="space-y-3 sm:space-y-4">
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container" style="min-height: 350px; max-height: 80vh;">
-                    <img src="img1.jpg" alt="Product image 1" class="w-full h-full object-contain"style="min-height: 350px; max-height: 80vh;" />
+                    <img src="img1.jpg" alt="Product image 1" class="w-full h-full object-contain" loading="lazy" />
                 </div>
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container">
-                    <img src="rgb_2.jpg" alt="Product image 2" class="w-full h-full object-contain" />
+                    <img src="rgb_2.jpg" alt="Product image 2" class="w-full h-full object-contain" loading="lazy" />
                 </div>
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container">
-                    <img src="img2.jpg" alt="Product image 3" class="w-full h-full object-contain" />
+                    <img src="img2.jpg" alt="Product image 3" class="w-full h-full object-contain" loading="lazy" />
                 </div>
             </div>
 
@@ -175,6 +338,7 @@
                             <label class="flex items-center gap-1 sm:gap-2 select-none opacity-60 cursor-not-allowed">
                                 <input type="radio" name="product_color" value="وردي" disabled class="sr-only peer">
                                 <span class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-pink-500 block border-2 border-white ring-1 ring-gray-300"></span>
+                                <i class="fa-solid fa-ban text-pink-500 text-[8px] sm:text-xs"></i>
                                 <span class="text-[10px] sm:text-xs font-bold text-gray-500">نفاذ الكمية</span>
                             </label>
                         </div>
@@ -210,14 +374,7 @@
                             <label class="delivery-option cursor-pointer">
                                 <input type="radio" name="livraison_post" value="domicile" checked onchange="calculateTotal()" class="sr-only">
                                 <div class="delivery-box rounded-lg text-center bg-white hover:bg-gray-50">
-                                    <!-- SVG Truck Icon -->
-                                    <svg class="icon-truck" viewBox="0 0 24 24">
-                                        <path d="M1 3h15v13H1z"/>
-                                        <path d="M16 8h4l3 3v5h-3"/>
-                                        <circle cx="5.5" cy="18" r="2.5"/>
-                                        <circle cx="18.5" cy="18" r="2.5"/>
-                                        <path d="M16 16v-3"/>
-                                    </svg>
+                                    <i class="fas fa-truck text-fuchsia-600"></i>
                                     <span class="block delivery-label font-bold text-gray-700">توصيل للمنزل</span>
                                     <span class="delivery-price text-gray-500" id="domicilePrice">-</span>
                                 </div>
@@ -226,11 +383,7 @@
                             <label class="delivery-option cursor-pointer">
                                 <input type="radio" name="livraison_post" value="bureau" onchange="calculateTotal()" class="sr-only">
                                 <div class="delivery-box rounded-lg text-center bg-white hover:bg-gray-50">
-                                    <!-- SVG Envelope Icon -->
-                                    <svg class="icon-envelope" viewBox="0 0 24 24">
-                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                        <path d="M22 6l-10 7L2 6"/>
-                                    </svg>
+                                    <i class="fas fa-envelope text-fuchsia-600"></i>
                                     <span class="block delivery-label font-bold text-gray-700">توصيل للبريد</span>
                                     <span class="delivery-price text-gray-500" id="postPrice">-</span>
                                 </div>
@@ -260,9 +413,7 @@
                 <!-- Footer -->
                 <div class="flex flex-col gap-3">
                     <button onclick="submitOrder()" id="submitBtn" class="w-full bg-gradient-to-r from-purple-600 to-violet-700 hover:from-purple-700 hover:to-violet-800 text-white font-bold py-3 px-5 rounded-xl shadow active:scale-[0.99] transition-all text-center flex items-center justify-center gap-2 text-xs sm:text-sm">
-                        <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
+                        <i class="fas fa-basket-shopping"></i>
                         تأكيد الطلب - الدفع عند الاستلام
                     </button>
                 </div>
@@ -270,6 +421,12 @@
         </div>
     </div>
 
+    <!-- Load Font Awesome from CDN (still needed for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Load Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <script>
         const SUPABASE_URL = 'https://ukmpamuyakbeewbbkhxc.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_-mFgnkFPzb2iBNqZXmAHcA_Qpvp1S38';
@@ -410,7 +567,7 @@
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<svg class="w-4 h-4 inline-block animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> جاري إرسال طلبك...`;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin ml-2"></i> جاري إرسال طلبك...`;
 
             const finalOrderPayload = {
                 customer_name: customerName,
@@ -427,7 +584,7 @@
             if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
                 alert("تم الفحص! يرجى وضع مفاتيح سوبابيس الحقيقية في الأسطر الأولى للـ Script لترحيل الطلب.");
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg> تأكيد الطلب - الدفع عند الاستلام`;
+                submitBtn.innerHTML = `<i class="fa-solid fa-basket-shopping"></i> تأكيد الطلب - الدفع عند الاستلام`;
                 return;
             }
 
@@ -449,7 +606,7 @@
                 alert(`حدث خطأ أثناء إرسال الطلب: ${err.message}`);
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg> تأكيد الطلب - الدفع عند الاستلام`;
+                submitBtn.innerHTML = `<i class="fa-solid fa-basket-shopping"></i> تأكيد الطلب - الدفع عند الاستلام`;
             }
         }
     </script>
