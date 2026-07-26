@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مروحة RGB المحمولة</title>
     
-    <!-- Preconnect to external CDNs for faster DNS & TLS negotiation -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://ukmpamuyakbeewbbkhxc.supabase.co" crossorigin>
-
-    <!-- Font Awesome moved to HEAD so icons render cleanly on first render -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
+    <!-- Use system fonts instead of Google Fonts -->
     <style>
         /* Use system fonts for faster loading */
         body { 
@@ -260,9 +252,6 @@
             .lg\:text-4xl { font-size: 2.25rem; }
         }
     </style>
-
-    <!-- Load Supabase asynchronously with defer -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased min-h-screen">
 
@@ -272,8 +261,7 @@
             <!-- Images Section - Responsive -->
             <div class="space-y-3 sm:space-y-4">
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container" style="min-height: 350px; max-height: 80vh;">
-                    <!-- Added fetchpriority="high" for the main product hero image -->
-                    <img src="img1.jpg" alt="Product image 1" class="w-full h-full object-contain" fetchpriority="high" />
+                    <img src="img1.jpg" alt="Product image 1" class="w-full h-full object-contain" loading="lazy" />
                 </div>
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container">
                     <img src="rgb_2.jpg" alt="Product image 2" class="w-full h-full object-contain" loading="lazy" />
@@ -379,7 +367,7 @@
                         <input type="text" id="address" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white" placeholder="البلدية، الحي، رقم الشارع">
                     </div>
 
-                    <!-- Delivery Type Selection -->
+                    <!-- Delivery Type Selection - Smaller -->
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-2">طريقة التوصيل *</label>
                         <div class="grid grid-cols-2 gap-2">
@@ -433,11 +421,17 @@
         </div>
     </div>
 
+    <!-- Load Font Awesome from CDN (still needed for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Load Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <script>
         const SUPABASE_URL = 'https://ukmpamuyakbeewbbkhxc.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_-mFgnkFPzb2iBNqZXmAHcA_Qpvp1S38';
         
-        let supabaseClient = null;
+        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
         let selectedProductPrice = 2000;
         let selectedQuantity = 1;
@@ -446,10 +440,7 @@
         let currentWilayaData = null;
         let wilayaSelected = false;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.supabase) {
-                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-            }
+        window.addEventListener('DOMContentLoaded', () => {
             fetchWilayasFromSupabase();
         });
 
@@ -485,12 +476,15 @@
             selectedProductPrice = price;
             selectedQuantity = qty;
             
+            // Get both containers
             const offer1 = document.getElementById('containerOffer1');
             const offer2 = document.getElementById('containerOffer2');
             
+            // Remove selected class from both
             offer1.classList.remove('selected');
             offer2.classList.remove('selected');
             
+            // Add selected class to the chosen one
             if (qty === 1) {
                 offer1.classList.add('selected');
             } else if (qty === 2) {
@@ -504,14 +498,17 @@
             const selectedWilayaId = document.getElementById('wilayaSelect').value;
             const deliveryType = document.querySelector('input[name="livraison_post"]:checked')?.value || 'domicile';
             
+            // Check if wilaya is selected
             wilayaSelected = selectedWilayaId && selectedWilayaId !== '';
             
+            // Get wilaya data
             if (wilayaSelected && loadedWilayas.length > 0) {
                 currentWilayaData = loadedWilayas.find(w => w.id == selectedWilayaId);
             } else {
                 currentWilayaData = null;
             }
             
+            // Calculate delivery price
             let deliveryPrice = 0;
             let deliveryDisplay = '-';
             
@@ -523,12 +520,15 @@
             }
             currentDeliveryPrice = deliveryPrice;
             
+            // Calculate total
             const total = wilayaSelected ? selectedProductPrice + deliveryPrice : selectedProductPrice;
             
+            // Update display
             document.getElementById('displayProductPrice').textContent = `${selectedProductPrice} د.ج`;
             document.getElementById('displayDeliveryPrice').textContent = deliveryDisplay;
             document.getElementById('displayTotalPrice').textContent = wilayaSelected ? `${total} د.ج` : `${selectedProductPrice} د.ج`;
             
+            // Update delivery option prices
             if (currentWilayaData) {
                 document.getElementById('domicilePrice').textContent = `${currentWilayaData.delivery_domicile} د.ج`;
                 document.getElementById('postPrice').textContent = `${currentWilayaData.delivery_post} د.ج`;
@@ -597,7 +597,9 @@
 
                 alert('تم تسجيل طلبك ولونك المفضّل بنجاح! سنتصل بك قريباً للتأكيد.');
                 document.getElementById('orderForm').reset();
+                // Reset delivery type to default
                 document.querySelector('input[name="livraison_post"][value="domicile"]').checked = true;
+                // Reset wilaya select
                 document.getElementById('wilayaSelect').value = '';
                 calculateTotal();
             } catch (err) {
