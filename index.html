@@ -30,14 +30,7 @@
             padding: 1rem 0.75rem 5rem;
         }
         /* Make default blue color have purple ring */
-.color-label input[type="radio"]:checked + .color-circle {
-    ring: 4px solid #d946ef !important;
-}
 
-/* Also add a class for initial state */
-.color-label.default-checked .color-circle {
-    ring: 4px solid #d946ef !important;
-}
         
         @media (min-width: 640px) {
             .container {
@@ -736,29 +729,29 @@
                 <form id="orderForm" class="space-y-3" onsubmit="event.preventDefault();">
                     
                     <!-- Color Selection -->
-                    <div class="form-group">
-                        <label class="form-label">اختر لون المروحة المفضّل *</label>
-                        <div class="color-group">
-                            <label class="color-label">
-                                <input type="radio" name="product_color" value="أزرق" checked>
-                                <span class="color-circle" style="background-color: #2563eb;"></span>
-                                <span class="color-name">أزرق</span>
-                            </label>
-                            
-                            <label class="color-label">
-                                <input type="radio" name="product_color" value="أخضر">
-                                <span class="color-circle" style="background-color: #10b981;"></span>
-                                <span class="color-name">أخضر</span>
-                            </label>
-                            
-                            <label class="color-label disabled">
-                                <input type="radio" name="product_color" value="وردي" disabled>
-                                <span class="color-circle" style="background-color: #ec4899;"></span>
-                                <i class="fa-solid fa-ban"></i>
-                                <span class="color-name">نفاذ الكمية</span>
-                            </label>
-                        </div>
-                    </div>
+<div class="form-group">
+    <label class="form-label">اختر لون المروحة المفضّل *</label>
+    <div class="color-group">
+        <label class="color-label default-checked">
+            <input type="radio" name="product_color" value="أزرق" checked>
+            <span class="color-circle" style="background-color: #2563eb;"></span>
+            <span class="color-name">أزرق</span>
+        </label>
+        
+        <label class="color-label">
+            <input type="radio" name="product_color" value="أخضر">
+            <span class="color-circle" style="background-color: #10b981;"></span>
+            <span class="color-name">أخضر</span>
+        </label>
+        
+        <label class="color-label disabled">
+            <input type="radio" name="product_color" value="وردي" disabled>
+            <span class="color-circle" style="background-color: #ec4899;"></span>
+            <i class="fa-solid fa-ban"></i>
+            <span class="color-name">نفاذ الكمية</span>
+        </label>
+    </div>
+</div>
 
                     <!-- Input Fields -->
                     <div class="form-group">
