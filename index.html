@@ -29,6 +29,15 @@
             margin: 0 auto;
             padding: 1rem 0.75rem 5rem;
         }
+        /* Make default blue color have purple ring */
+.color-label input[type="radio"]:checked + .color-circle {
+    ring: 4px solid #d946ef !important;
+}
+
+/* Also add a class for initial state */
+.color-label.default-checked .color-circle {
+    ring: 4px solid #d946ef !important;
+}
         
         @media (min-width: 640px) {
             .container {
