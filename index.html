@@ -79,7 +79,7 @@
             <!-- Images Section - Responsive -->
             <div class="space-y-3 sm:space-y-4">
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container" style="min-height: 350px; max-height: 80vh;">
-                    <img src="img1.jpg" alt="Product image 1" class="w-full h-full object-contain" />
+                    <img src="img1.jpg" alt="Product image 1" class="w-full h-full object-contain" style="min-height: 350px; max-height: 80vh;"/>
                 </div>
                 <div class="w-full overflow-hidden bg-gray-100 product-image-container">
                     <img src="rgb_2.jpg" alt="Product image 2" class="w-full h-full object-contain" />
@@ -190,7 +190,7 @@
                         <label class="block text-xs font-bold text-gray-700 mb-2">طريقة التوصيل *</label>
                         <div class="grid grid-cols-2 gap-2">
                             <label class="delivery-option cursor-pointer">
-                                <input type="radio" name="delivery_type" value="domicile" checked onchange="calculateTotal()" class="sr-only">
+                                <input type="radio" name="livraison_post" value="domicile" checked onchange="calculateTotal()" class="sr-only">
                                 <div class="delivery-box rounded-lg text-center bg-white hover:bg-gray-50">
                                     <i class="fas fa-truck text-fuchsia-600"></i>
                                     <span class="block delivery-label font-bold text-gray-700">توصيل للمنزل</span>
@@ -199,7 +199,7 @@
                             </label>
                             
                             <label class="delivery-option cursor-pointer">
-                                <input type="radio" name="delivery_type" value="post" onchange="calculateTotal()" class="sr-only">
+                                <input type="radio" name="livraison_post" value="bureau" onchange="calculateTotal()" class="sr-only">
                                 <div class="delivery-box rounded-lg text-center bg-white hover:bg-gray-50">
                                     <i class="fas fa-envelope text-fuchsia-600"></i>
                                     <span class="block delivery-label font-bold text-gray-700">توصيل للبريد</span>
@@ -308,7 +308,7 @@
 
         function calculateTotal() {
             const selectedWilayaId = document.getElementById('wilayaSelect').value;
-            const deliveryType = document.querySelector('input[name="delivery_type"]:checked')?.value || 'domicile';
+            const deliveryType = document.querySelector('input[name="livraison_post"]:checked')?.value || 'domicile';
             
             // Check if wilaya is selected
             wilayaSelected = selectedWilayaId && selectedWilayaId !== '';
@@ -355,12 +355,17 @@
             const phoneNumber = document.getElementById('phone_number').value.trim();
             const wilayaId = document.getElementById('wilayaSelect').value;
             const detailedAddress = document.getElementById('address').value.trim();
-            const deliveryType = document.querySelector('input[name="delivery_type"]:checked')?.value || 'domicile';
+            const deliveryType = document.querySelector('input[name="livraison_post"]:checked')?.value || 'domicile';
             
             const selectedColor = document.querySelector('input[name="product_color"]:checked').value;
             
             if (!customerName || !phoneNumber || !wilayaId) {
                 alert('من فضلك، املأ جميع الحقول الأساسية المطلوبة والمؤشر عليها بنجمة (*)');
+                return;
+            }
+
+            if (!detailedAddress) {
+                alert('من فضلك، أدخل العنوان بالتفصيل');
                 return;
             }
 
@@ -378,16 +383,14 @@
 
             const finalOrderPayload = {
                 customer_name: customerName,
-                phone_number: phoneNumber, 
-                address: detailedAddress || 'تم تحديد الولاية فقط',
+                phone_number: phoneNumber,
+                address: detailedAddress,
                 quantity: parseInt(selectedQuantity),
                 total_price: parseFloat(totalPrice),
                 wilaya_id: parseInt(wilayaId),
-                color: selectedColor, 
-                status: 'pending',
-                type_livraison: deliveryType,
-                total_price: selectedProductPrice + currentDeliveryPrice,
-               
+                color: selectedColor,
+                livraison_post: deliveryType,
+                status: 'pending'
             };
 
             if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
@@ -407,7 +410,7 @@
                 alert('تم تسجيل طلبك ولونك المفضّل بنجاح! سنتصل بك قريباً للتأكيد.');
                 document.getElementById('orderForm').reset();
                 // Reset delivery type to default
-                document.querySelector('input[name="delivery_type"][value="domicile"]').checked = true;
+                document.querySelector('input[name="livraison_post"][value="domicile"]').checked = true;
                 // Reset wilaya select
                 document.getElementById('wilayaSelect').value = '';
                 calculateTotal();
