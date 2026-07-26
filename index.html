@@ -30,8 +30,6 @@
             }
         }
 
-        
-
         .offer-card {
             transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
             border-color: #e5e7eb;
@@ -43,6 +41,33 @@
             border-color: #d946ef !important;
             background-color: rgba(248, 113, 255, 0.12) !important;
             box-shadow: inset 0 0 0 1px rgba(220, 38, 255, 0.18) !important;
+        }
+
+        .delivery-option {
+            transition: all 0.2s ease;
+        }
+
+        .delivery-option input[type="radio"]:checked + .delivery-box {
+            border-color: #d946ef !important;
+            background-color: rgba(248, 113, 255, 0.08) !important;
+        }
+
+        .delivery-box {
+            border: 2px solid #e5e7eb;
+            transition: all 0.2s ease;
+            padding: 0.5rem 0.75rem;
+        }
+        
+        .delivery-box i {
+            font-size: 1rem;
+        }
+        
+        .delivery-box .delivery-label {
+            font-size: 0.7rem;
+        }
+        
+        .delivery-box .delivery-price {
+            font-size: 0.65rem;
         }
     </style>
 </head>
@@ -70,21 +95,18 @@
                 <div class="space-y-4 sm:space-y-5">
                     <!-- Header Card -->
                     <div class="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-fuchsia-600 to-violet-600 text-white p-4 sm:p-6 shadow-lg">
-                        <div class="text-md sm:text-sm md:text-base lg:text-lg italic font-semibold tracking-wide" >
-                            توصيل مجاني الآن - Livraison gratuite
-                        </div>
-                        <h1 class="mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black leading-tight">
+                        <h1 class="mt-0 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black leading-tight">
                             مروحة RGB المحمولة
                         </h1>
                         <p class="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-white/90 leading-relaxed">
-                            توصيل مجاني سريع وآمن حتى باب منزلك. اطلب الآن واستمتع بعرض خاص لا يُفوّت.
+                            مروحة محمولة بقوة 3 سرعات مع إضاءة RGB، خفيفة وسهلة الحمل
                         </p>
                     </div>
                     
                     <!-- Price -->
                     <div class="space-y-1">
                         <div class="text-gray-400 line-through text-sm sm:text-base font-semibold">3600 د.ج</div>
-                        <div class="text-2xl sm:text-3xl md:text-4xl font-black text-violet-600">2780 د.ج</div>
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-black text-violet-600">2000 د.ج</div>
                     </div>
                 </div>
 
@@ -93,21 +115,21 @@
                     <label class="block text-xs font-bold text-gray-700 mb-2">اختر العرض المناسب لك:</label>
                     <div class="space-y-2">
                         <label id="containerOffer1" class="relative flex items-center justify-between p-3 sm:p-3.5 border-2 rounded-xl cursor-pointer transition-all select-none offer-card selected">
-                            <input type="radio" name="product_offer" value="1" checked onchange="switchOffer(2780, 1)" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 accent-fuchsia-600 w-4 h-4 sm:w-4.5 sm:h-4.5">
+                            <input type="radio" name="product_offer" value="1" checked onchange="switchOffer(2000, 1)" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 accent-fuchsia-600 w-4 h-4 sm:w-4.5 sm:h-4.5">
                             <div class="pr-1">
                                 <span class="block font-bold text-gray-900 text-xs sm:text-sm">عرض قطعة واحدة</span>
                                 <span class="text-[10px] sm:text-[11px] text-gray-500">مروحة واحدة ملونة بقوة كاملة</span>
                             </div>
-                            <span class="font-black text-violet-700 text-sm sm:text-base ml-6 sm:ml-8">2780 د.ج</span>
+                            <span class="font-black text-violet-700 text-sm sm:text-base ml-6 sm:ml-8">2000 د.ج</span>
                         </label>
                         
                         <label id="containerOffer2" class="relative flex items-center justify-between p-3 sm:p-3.5 border-2 rounded-xl cursor-pointer transition-all select-none offer-card">
-                            <input type="radio" name="product_offer" value="2" onchange="switchOffer(5200, 2)" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 accent-fuchsia-600 w-4 h-4 sm:w-4.5 sm:h-4.5">
+                            <input type="radio" name="product_offer" value="2" onchange="switchOffer(3900, 2)" class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 accent-fuchsia-600 w-4 h-4 sm:w-4.5 sm:h-4.5">
                             <div class="pr-1">
                                 <span class="block font-bold text-gray-900 text-xs sm:text-sm">عرض قطعتين (2)</span>
                                 <span class="text-[10px] sm:text-[11px] text-gray-500">احصل على جهازين بسعر مخفض وشحن موحد</span>
                             </div>
-                            <span class="font-black text-gray-900 text-sm sm:text-base ml-6 sm:ml-8">5200 د.ج</span>
+                            <span class="font-black text-gray-900 text-sm sm:text-base ml-6 sm:ml-8">3900 د.ج</span>
                         </label>
                     </div>
                 </div>
@@ -153,7 +175,7 @@
 
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">الولاية *</label>
-                        <select id="wilayaSelect" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white">
+                        <select id="wilayaSelect" required onchange="calculateTotal()" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white">
                             <option value="">-- اختر الولاية من القائمة --</option>
                         </select>
                     </div>
@@ -162,15 +184,53 @@
                         <label class="block text-xs font-bold text-gray-700 mb-1">العنوان بالتفصيل</label>
                         <input type="text" id="address" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white" placeholder="البلدية، الحي، رقم الشارع">
                     </div>
+
+                    <!-- Delivery Type Selection - Smaller -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-2">طريقة التوصيل *</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="delivery-option cursor-pointer">
+                                <input type="radio" name="delivery_type" value="domicile" checked onchange="calculateTotal()" class="sr-only">
+                                <div class="delivery-box rounded-lg text-center bg-white hover:bg-gray-50">
+                                    <i class="fas fa-truck text-fuchsia-600"></i>
+                                    <span class="block delivery-label font-bold text-gray-700">توصيل للمنزل</span>
+                                    <span class="delivery-price text-gray-500" id="domicilePrice">-</span>
+                                </div>
+                            </label>
+                            
+                            <label class="delivery-option cursor-pointer">
+                                <input type="radio" name="delivery_type" value="post" onchange="calculateTotal()" class="sr-only">
+                                <div class="delivery-box rounded-lg text-center bg-white hover:bg-gray-50">
+                                    <i class="fas fa-envelope text-fuchsia-600"></i>
+                                    <span class="block delivery-label font-bold text-gray-700">توصيل للبريد</span>
+                                    <span class="delivery-price text-gray-500" id="postPrice">-</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Summary Card -->
+                    <div class="bg-gray-50 rounded-xl p-4 space-y-2 border border-gray-200">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">سعر المنتج:</span>
+                            <span class="font-bold text-gray-800" id="displayProductPrice">2000 د.ج</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">سعر التوصيل:</span>
+                            <span class="font-bold text-gray-800" id="displayDeliveryPrice">-</span>
+                        </div>
+                        <div class="border-t border-gray-200 pt-2 mt-1">
+                            <div class="flex justify-between text-base">
+                                <span class="font-bold text-gray-700">المجموع الكلي:</span>
+                                <span class="font-black text-violet-700 text-xl" id="displayTotalPrice">2000 د.ج</span>
+                            </div>
+                        </div>
+                    </div>
                 </form>
 
                 <!-- Footer -->
-                <div class="flex flex-col gap-3 sm:gap-4 md:flex-row md:items-center md:justify-between">
-                    <div class="text-sm text-gray-500">
-                        <span class="block uppercase tracking-[0.2em] font-black text-xs sm:text-sm">المجموع الكلي</span>
-                        <span id="footerTotal" class="text-2xl sm:text-3xl font-black text-violet-700">2780 د.ج</span>
-                    </div>
-                    <button onclick="submitOrder()" id="submitBtn" class="w-full md:max-w-md bg-gradient-to-r from-purple-600 to-violet-700 hover:from-purple-700 hover:to-violet-800 text-white font-bold py-3 px-5 rounded-xl shadow active:scale-[0.99] transition-all text-center flex items-center justify-center gap-2 text-xs sm:text-sm">
+                <div class="flex flex-col gap-3">
+                    <button onclick="submitOrder()" id="submitBtn" class="w-full bg-gradient-to-r from-purple-600 to-violet-700 hover:from-purple-700 hover:to-violet-800 text-white font-bold py-3 px-5 rounded-xl shadow active:scale-[0.99] transition-all text-center flex items-center justify-center gap-2 text-xs sm:text-sm">
                         <i class="fa-solid fa-basket-shopping"></i>
                         تأكيد الطلب - الدفع عند الاستلام
                     </button>
@@ -185,9 +245,12 @@
         
         const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-        let selectedProductPrice = 2780;
+        let selectedProductPrice = 2000;
         let selectedQuantity = 1;
         let loadedWilayas = [];
+        let currentDeliveryPrice = 0;
+        let currentWilayaData = null;
+        let wilayaSelected = false;
 
         window.addEventListener('DOMContentLoaded', () => {
             fetchWilayasFromSupabase();
@@ -202,7 +265,7 @@
             try {
                 const { data, error } = await supabaseClient
                     .from('wilayas_store')
-                    .select('id, number, name')
+                    .select('id, number, name, delivery_domicile, delivery_post')
                     .order('number', { ascending: true });
 
                 if (error) throw error;
@@ -218,7 +281,7 @@
             } catch (err) {
                 selectElement.innerHTML = `<option value="">-- فشل جلب الولايات --</option>`;
             }
-            updateTotalPrice();
+            calculateTotal();
         }
 
         function switchOffer(price, qty) {
@@ -240,12 +303,51 @@
                 offer2.classList.add('selected');
             }
             
-            updateTotalPrice();
+            calculateTotal();
         }
 
-        function updateTotalPrice() {
-            // Just show the product price, no shipping added
-            document.getElementById('footerTotal').textContent = `${selectedProductPrice} د.ج`;
+        function calculateTotal() {
+            const selectedWilayaId = document.getElementById('wilayaSelect').value;
+            const deliveryType = document.querySelector('input[name="delivery_type"]:checked')?.value || 'domicile';
+            
+            // Check if wilaya is selected
+            wilayaSelected = selectedWilayaId && selectedWilayaId !== '';
+            
+            // Get wilaya data
+            if (wilayaSelected && loadedWilayas.length > 0) {
+                currentWilayaData = loadedWilayas.find(w => w.id == selectedWilayaId);
+            } else {
+                currentWilayaData = null;
+            }
+            
+            // Calculate delivery price
+            let deliveryPrice = 0;
+            let deliveryDisplay = '-';
+            
+            if (currentWilayaData) {
+                deliveryPrice = deliveryType === 'domicile' 
+                    ? currentWilayaData.delivery_domicile 
+                    : currentWilayaData.delivery_post;
+                deliveryDisplay = `${deliveryPrice} د.ج`;
+            }
+            currentDeliveryPrice = deliveryPrice;
+            
+            // Calculate total
+            const total = wilayaSelected ? selectedProductPrice + deliveryPrice : selectedProductPrice;
+            
+            // Update display
+            document.getElementById('displayProductPrice').textContent = `${selectedProductPrice} د.ج`;
+            document.getElementById('displayDeliveryPrice').textContent = deliveryDisplay;
+            document.getElementById('displayTotalPrice').textContent = wilayaSelected ? `${total} د.ج` : `${selectedProductPrice} د.ج`;
+            
+            // Update delivery option prices
+            if (currentWilayaData) {
+                document.getElementById('domicilePrice').textContent = `${currentWilayaData.delivery_domicile} د.ج`;
+                document.getElementById('postPrice').textContent = `${currentWilayaData.delivery_post} د.ج`;
+            } else {
+                document.getElementById('domicilePrice').textContent = '-';
+                document.getElementById('postPrice').textContent = '-';
+            }
         }
 
         async function submitOrder() {
@@ -253,6 +355,7 @@
             const phoneNumber = document.getElementById('phone_number').value.trim();
             const wilayaId = document.getElementById('wilayaSelect').value;
             const detailedAddress = document.getElementById('address').value.trim();
+            const deliveryType = document.querySelector('input[name="delivery_type"]:checked')?.value || 'domicile';
             
             const selectedColor = document.querySelector('input[name="product_color"]:checked').value;
             
@@ -267,6 +370,8 @@
                 return;
             }
 
+            const totalPrice = selectedProductPrice + currentDeliveryPrice;
+
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin ml-2"></i> جاري إرسال طلبك...`;
@@ -276,11 +381,13 @@
                 phone_number: phoneNumber, 
                 address: detailedAddress || 'تم تحديد الولاية فقط',
                 quantity: parseInt(selectedQuantity),
-                total_price: parseFloat(selectedProductPrice),
+                total_price: parseFloat(totalPrice),
                 wilaya_id: parseInt(wilayaId),
                 color: selectedColor, 
                 status: 'pending',
-                livraison_post: 'domicile'
+                type_livraison: deliveryType,
+                product_price: selectedProductPrice,
+                delivery_price: currentDeliveryPrice
             };
 
             if (!supabaseClient || SUPABASE_URL === "YOUR_SUPABASE_URL") {
@@ -299,7 +406,11 @@
 
                 alert('تم تسجيل طلبك ولونك المفضّل بنجاح! سنتصل بك قريباً للتأكيد.');
                 document.getElementById('orderForm').reset();
-                updateTotalPrice();
+                // Reset delivery type to default
+                document.querySelector('input[name="delivery_type"][value="domicile"]').checked = true;
+                // Reset wilaya select
+                document.getElementById('wilayaSelect').value = '';
+                calculateTotal();
             } catch (err) {
                 alert(`حدث خطأ أثناء إرسال الطلب: ${err.message}`);
             } finally {
